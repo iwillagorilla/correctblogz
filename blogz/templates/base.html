@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog</title>
+        <a href="/">Home Page</a><br>
+        <a href="/blog">Main Blog Page</a><br>
+        <a href="/new_post">Add a Blog Entry</a><br>
+        <a href="/logout">Logout</a><br>
+        <a href="/signup">Sign Up for Blogz</a><br>
+        <a href="/login">Login</a><br>
+         
+        <style type="text/css">
+            h1 {
+                text-align: center
+                }
+                .error{
+                    color: red;
+                }
+        </style>
+    </head>
+    <body>
+        
+        {% block content %}
+        {% endblock %}
+
+    </body>
+</html>

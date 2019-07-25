@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <form action ="/author_blogs", method='GET'>
+    <h1>{{ title }} </h1>
+  
+    <ul>
+      {% for blog in blogs_by_user %}
+      <li>
+      
+      <h2>{{ blog.title }} </h2>
+      <p></p>
+      <p></p>
+      {{blog.body}}
+      </li>
+
+    </ul>
+  
+      
+        {% endfor %}
+      </form>
+{% endblock %}

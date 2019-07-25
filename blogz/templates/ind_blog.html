@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form  action="/ind_blog", method='GET' >
+        <h1> {{ title }} </h1>
+        
+        <ul>
+            <li>
+                <h2> {{ ind_blog.title }}  </h2>
+                <p></p>
+                <p></p>
+                {{ ind_blog.body }} 
+            </li>
+       
+         
+        <p></p>
+        <p>written by <a href = "/blog?authorid={{ind_blog.owner.id}}">{{ind_blog.owner.username}}</a></p>
+        </ul>
+
+    </form>
+
+
+{% endblock %}

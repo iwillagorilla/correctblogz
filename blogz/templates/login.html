@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Log in to Blogz!</h1>
+<p>If you don't have an account, you may <a href="/signup">signup</a> for one.</p>
+<form action="/login" method="post">
+    
+
+
+    
+    
+        
+    
+        <form action="/login" method="POST">
+            <label for="username">Username</label>
+            <input name="username" type="text" value="{{ username }}">
+            <p class="error">{{ username_error }}</p>
+
+            <label for="password">Password</label>    
+            <input name="password" type="password">
+            <p class="error">{{ password_error }}</p>
+    
+            <input type="submit" value="login">
+    
+        
+    
+       
+    </form>
+   
+{% endblock %}
+
+
+    
