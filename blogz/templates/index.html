@@ -15,7 +15,7 @@
         <hr>
         {% for user in users %}
         <li>
-        <p class="users"><a href="/author_blogs?userid={{user.id}}">{{ user.username }}</a></p>
+        <p class="users"><a href="/blog?authorid={{user.id}}">{{ user.username }}</a></p>
         </li>
         {% endfor %}
       

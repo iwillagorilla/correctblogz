@@ -2,22 +2,17 @@
 
 {% block content %}
 
-  <form action ="/author_blogs", method='GET'>
-    <h1>{{ title }} </h1>
   
+    <h1>{{ title }} </h1>
+
+    <h2><a href="/blog?authorid={{user.id}}">{{user.username}}</a></h2>    
     <ul>
       {% for blog in blogs_by_user %}
       <li>
-      
-      <h2>{{ blog.title }} </h2>
-      <p></p>
-      <p></p>
-      {{blog.body}}
+        <h3><a href="/blog?id={{blog.id}}">{{blog.title }}</a></h3>  
+        <p>{{blog.body}}</p> 
       </li>
-
+      {% endfor %}
     </ul>
-  
       
-        {% endfor %}
-      </form>
 {% endblock %}

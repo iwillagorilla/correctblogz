@@ -36,7 +36,7 @@ class User(db.Model):
            
 @app.before_request
 def require_login():
-    allowed_functions = ['get_login', 'get_signup', 'index']
+    allowed_functions = ['get_login', 'get_signup', 'index', 'get_blogs', 'get_author_blog']
     if request.endpoint not in allowed_functions and 'username' not in session:
         return redirect('/login')
 
@@ -83,32 +83,32 @@ def get_blogs():
     id = request.args.get('id')
     if id :
         get_blog_entry = Blog.query.get(id)
-        return render_template('ind_blog.html', title = "New Blog", ind_blog=get_blog_entry(id))
+        return render_template('ind_blog.html', title = "New Blog", ind_blog=get_blog_entry)
 
     authorid = request.args.get('authorid')
     if authorid :
-        id = int(authorid)
-        get_auth_blogs = Blog.query.filter_by(owner_id=id).all()
+        get_auth_blogs = Blog.query.filter_by(owner_id=authorid).all()
         return render_template('blog.html', title="Author Blog List", blogs=get_auth_blogs)
     
     blogs = Blog.query.all()
     return render_template('blog.html', title="Blogz", blogs=blogs)
 
 
-@app.route('/author_blogs', methods=['GET']) 
-def get_author_blog():
+# @app.route('/author_blogs', methods=['GET']) 
+# def get_author_blog():
 
-    user_id = request.args.get('userid') 
-    blogs_by_user = Blog.query.filter_by(owner_id=user_id).all()  
+#     user_id = request.args.get('userid') 
+#     blogs_by_user = Blog.query.filter_by(owner_id=user_id).all()  
+#     user = User.query.get(user_id) 
 
-    return render_template('author_blogs.html', title="Blogs by Author", blogs_by_user=blogs_by_user)
+#     return render_template('author_blogs.html', title="Blogs by Author", blogs_by_user=blogs_by_user, user=user)
 
-@app.route('/ind_blog', methods=['GET'])
-def get_ind_blog():
+# @app.route('/ind_blog', methods=['GET'])
+# def get_ind_blog():
     
-    blog_id = request.args.get('id')
-    ind_blog = Blog.query.get(blog_id)
-    return render_template('ind_blog.html', title="Individual Blog", ind_blog=ind_blog)
+#     blog_id = request.args.get('id')
+#     ind_blog = Blog.query.get(blog_id)
+#     return render_template('ind_blog.html', title="Individual Blog", ind_blog=ind_blog)
 
 @app.route('/signup', methods=['GET', 'POST']) 
 def get_signup():
